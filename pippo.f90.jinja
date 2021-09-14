@@ -1,0 +1,33 @@
+!
+! Copyright (C) 2001-2009 Quantum ESPRESSO group
+! This file is distributed under the terms of the
+! GNU General Public License. See the file `License'
+! in the root directory of the present distribution,
+! or http://www.gnu.org/copyleft/gpl.txt .
+!
+MODULE qes_write_module
+  !
+  ! Auto-generated code: don't edit this file
+  !
+  ! Quantum Espresso XSD namespace: {{ schema.target_namespace }}
+  !
+  USE qes_types_module
+  USE FoX_wxml
+  !
+  IMPLICIT NONE
+  !
+  PUBLIC
+  !
+  INTERFACE qes_write
+  {%- for type in schema.complex_types %}
+    MODULE PROCEDURE qes_write_{{ type|type_name }}
+  {%- endfor %}
+  END INTERFACE qes_write
+  !
+  CONTAINS
+  !
+  {% for type in schema.complex_types %}
+{% include "write/qes_write_subroutines.f90.jinja" %}
+  {%- endfor %}
+  !
+END MODULE qes_write_module

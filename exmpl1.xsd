@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+xmlns:exmpl="http://pietrodelugas.it"
+targetNamespace="http://pietrodelugas.it"
+xmlns:qes="http://www.quantum-espresso.org/ns/qes/qes-1.0">
+
+<import schemaLocation="/home/pietro/repositories/esempio/qes_current_master.xsd"
+namespace="http://www.quantum-espresso.org/ns/qes/qes-1.0"/> 
+
+<element name="example" type="exmpl:myExampleType"/>
+<complexType name="myExampleType">
+<all>
+<element type="qes:d3vectorType" name="v1"/>
+<element type="qes:vectorType" name="vlungo"/>
+</all>
+</complexType>
+</schema>
