@@ -4,14 +4,19 @@ xmlns:exmpl="http://pietrodelugas.it"
 targetNamespace="http://pietrodelugas.it"
 xmlns:qes="http://www.quantum-espresso.org/ns/qes/qes-1.0">
 
-<import schemaLocation="/home/pietro/repositories/esempio/qes_current_master.xsd"
+<import schemaLocation="http://www.quantum-espresso.org/ns/qes/qes_210716.xsd"
 namespace="http://www.quantum-espresso.org/ns/qes/qes-1.0"/> 
 
-<element name="example" type="exmpl:myExampleType"/>
-<complexType name="myExampleType">
+<element name="example" type="exmpl:myExample"/>
+<complexType name="myExample">
 <all>
 <element type="qes:d3vectorType" name="v1"/>
 <element type="qes:vectorType" name="vlungo"/>
+<element type="qes:atomic_structureType" name="coords"/> 
+<element type="exmpl:mycomplexType" name="pippo"/>
 </all>
+</complexType>
+<complexType>
+
 </complexType>
 </schema>

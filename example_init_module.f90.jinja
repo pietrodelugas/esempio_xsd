@@ -1,0 +1,55 @@
+!
+! Copyright (C) 2001-2009 Quantum ESPRESSO group
+! This file is distributed under the terms of the
+! GNU General Public License. See the file `License'
+! in the root directory of the present distribution,
+! or http://www.gnu.org/copyleft/gpl.txt .
+!
+!
+MODULE example_init_module
+  !
+  ! Auto-generated code: don't edit or at least don't commit changes
+  !
+  ! Quantum Espresso XSD namespace: {{ schema.target_namespace }}
+  !
+  USE kinds, only: DP
+  USE qes_types_module
+  USE qes_init_module
+  USE example_types_module
+  
+  !
+  IMPLICIT NONE
+  !
+  PRIVATE
+  !
+  PUBLIC :: example_init
+  !
+  INTERFACE example_init
+    !
+  {%- for type in schema.complex_types %}
+      {%- if type.local_name in ['matrixType', 'integerMatrixType'] %}
+    MODULE PROCEDURE qes_init_{{ type|type_name }}_1
+    MODULE PROCEDURE qes_init_{{ type|type_name }}_2
+    MODULE PROCEDURE qes_init_{{ type|type_name }}_3
+      {%- else %}
+    MODULE PROCEDURE qes_init_{{ type|type_name }}
+      {%- endif %}
+  {%- endfor %}
+    !
+  END INTERFACE qes_init
+  !
+  CONTAINS
+  !
+  {%- for type in schema.complex_types %}
+    {%- if type.local_name in ['matrixType', 'integerMatrixType'] %}
+{%include "init/init_matrix_subroutines.f90.jinja" %}
+    {%- elif type is extension('matrixType', 'integerMatrixType') %}
+{%include "init/init_matrix_extension.f90.jinja" %}
+    {%- elif type is extension('vectorType', 'integerVectorType') %}
+{%include "init/init_vector_subroutines.f90.jinja" %}
+    {%- else %}
+{% include "init/init_subroutine.f90.jinja" %}
+    {%- endif %}
+  {%- endfor %}
+  !
+END MODULE example_init_module

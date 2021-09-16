@@ -12,17 +12,19 @@ MODULE qes_write_module
   ! Quantum Espresso XSD namespace: {{ schema.target_namespace }}
   !
   USE qes_types_module
+  USE example_types_module 
+  USW qes_write_module
   USE FoX_wxml
   !
   IMPLICIT NONE
   !
   PUBLIC
   !
-  INTERFACE qes_write
+  INTERFACE example_write
   {%- for type in schema.complex_types %}
     MODULE PROCEDURE qes_write_{{ type|type_name }}
   {%- endfor %}
-  END INTERFACE qes_write
+  END INTERFACE example_write
   !
   CONTAINS
   !
