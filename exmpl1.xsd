@@ -16,7 +16,12 @@ namespace="http://www.quantum-espresso.org/ns/qes/qes-1.0"/>
 <element type="exmpl:mycomplexType" name="pippo"/>
 </all>
 </complexType>
-<complexType>
-
+<complexType name="mycomplexType">
+  <all>
+    <element type="qes:vectorType" name="vec"/>
+    <element type="string" name="word"/>
+  </all>
+  <attribute type="integer" name="class"/>
+  <attribute type="qes:integerListType" name="shape"/> 
 </complexType>
 </schema>
